@@ -33,7 +33,11 @@ class FormActivity : AppCompatActivity() {
             viubain.textInputLayout.editText?.setText(hewan.nama)
             viubain.textInputLayout2.editText?.setText(hewan.usia)
             if (hewan is Ayam){
-
+            viubain.radioButton3.isChecked = true
+            }else if (hewan is Kambing){
+                viubain.radioButton2.isChecked = true
+            }else{
+                viubain.radioButton.isChecked = true
             }
         }
     }
