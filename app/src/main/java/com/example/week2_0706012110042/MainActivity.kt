@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.week2_0706012110042.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -18,35 +17,37 @@ class MainActivity : AppCompatActivity(), CardListener {
     private lateinit var viubain: ActivityMainBinding
     private val adapter = Adapter(GlobalVar.ListHewan, this)
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viubain = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viubain.root)
         supportActionBar?.hide()
-        emboh()
         setapRV()
+        emboh()
     }
 
     override fun onResume() {
         super.onResume()
         if (GlobalVar.ListHewan.size == 0 ){
-            viubain.recyclerView.visibility = View.VISIBLE
-            viubain.textView4.visibility = View.GONE
-        }else{
             viubain.recyclerView.visibility = View.GONE
             viubain.textView4.visibility = View.VISIBLE
+        }else{
+            viubain.recyclerView.visibility = View.VISIBLE
+            viubain.textView4.visibility = View.GONE
         }
         adapter.notifyDataSetChanged()
     }
 
     private fun emboh(){
-        val myintent = Intent(this, FormActivity::class.java)
-        startActivity(myintent)
+        viubain.floatingActionButton.setOnClickListener(){
+            val myintent = Intent(this, FormActivity::class.java)
+            startActivity(myintent)
+        }
+
     }
 
     private fun setapRV(){
-        val layoutManager = GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(baseContext)
         viubain.recyclerView.layoutManager = layoutManager
         viubain.recyclerView.adapter = adapter
     }
@@ -86,7 +87,7 @@ class MainActivity : AppCompatActivity(), CardListener {
         if(GlobalVar.ListHewan.get(position).jenis.equals("Ayam")){
             Toast.makeText(baseContext, "Kamu memberi makan biji-bijian", Toast.LENGTH_LONG).show()
         }else{
-            Toast.makeText(baseContext, "Kamu memberi mkan rerumputan", Toast.LENGTH_LONG).show()
+            Toast.makeText(baseContext, "Kamu memberi makan rerumputan", Toast.LENGTH_LONG).show()
         }
     }
 

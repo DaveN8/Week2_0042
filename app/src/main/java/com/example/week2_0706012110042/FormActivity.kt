@@ -14,7 +14,7 @@ import com.example.week2_0706012110042.databinding.ActivityFormBinding
 class FormActivity : AppCompatActivity() {
 
     private lateinit var viubain: ActivityFormBinding
-    private var position: Int = -1
+    private var position: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         viubain = ActivityFormBinding.inflate(layoutInflater)
@@ -32,13 +32,13 @@ class FormActivity : AppCompatActivity() {
             viubain.button3.text = "Save Edit"
             viubain.textInputLayout.editText?.setText(hewan.nama)
             viubain.textInputLayout2.editText?.setText(hewan.usia)
-            if (hewan is Ayam){
-            viubain.radioButton3.isChecked = true
-            }else if (hewan is Kambing){
-                viubain.radioButton2.isChecked = true
-            }else{
-                viubain.radioButton.isChecked = true
-            }
+//            if (hewan is Ayam){
+//            viubain.radioButton3.isChecked = true
+//            }else if (hewan is Kambing){
+//                viubain.radioButton2.isChecked = true
+//            }else{
+//                viubain.radioButton.isChecked = true
+//            }
         }
     }
 
@@ -51,46 +51,52 @@ class FormActivity : AppCompatActivity() {
                 if (viubain.radioButton3.isChecked){
                     val hewan = Ayam(
                         viubain.textInputLayout.editText?.text.toString().trim(),
-                        viubain.radioButton3.toString().trim(),
+                        viubain.radioButton3.text.toString().trim(),
                         viubain.textInputLayout2.editText?.text.toString().trim().toInt()
                     )
                     if(checker(hewan)){
                         if(position == -1){
                             GlobalVar.ListHewan.add(hewan)
                             Toast.makeText(baseContext, "Data Berhasil Disimpan", Toast.LENGTH_SHORT).show()
+                            finish()
                         }else{
                             GlobalVar.ListHewan[position] = hewan
                             Toast.makeText(baseContext, "Data Berhasil Diupdate", Toast.LENGTH_SHORT).show()
+                            finish()
                         }
                     }
                 }else if (viubain.radioButton2.isChecked){
                     val hewan = Kambing(
                         viubain.textInputLayout.editText?.text.toString().trim(),
-                        viubain.radioButton2.toString().trim(),
+                        viubain.radioButton2.text.toString().trim(),
                         viubain.textInputLayout2.editText?.text.toString().trim().toInt()
                     )
                     if(checker(hewan)){
                         if(position == -1){
                             GlobalVar.ListHewan.add(hewan)
                             Toast.makeText(baseContext, "Data Berhasil Disimpan", Toast.LENGTH_SHORT).show()
+                            finish()
                         }else{
                             GlobalVar.ListHewan[position] = hewan
                             Toast.makeText(baseContext, "Data Berhasil Diupdate", Toast.LENGTH_SHORT).show()
+                            finish()
                         }
                     }
                 }else{
                     val hewan = Sapi(
                         viubain.textInputLayout.editText?.text.toString().trim(),
-                        viubain.radioButton.toString().trim(),
+                        viubain.radioButton.text.toString().trim(),
                         viubain.textInputLayout2.editText?.text.toString().trim().toInt()
                     )
                     if(checker(hewan)){
                         if(position == -1){
                             GlobalVar.ListHewan.add(hewan)
                             Toast.makeText(baseContext, "Data Berhasil Disimpan", Toast.LENGTH_SHORT).show()
+                            finish()
                         }else{
                             GlobalVar.ListHewan[position] = hewan
                             Toast.makeText(baseContext, "Data Berhasil Diupdate", Toast.LENGTH_SHORT).show()
+                            finish()
                         }
                     }
                 }
