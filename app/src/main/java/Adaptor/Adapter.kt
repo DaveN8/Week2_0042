@@ -2,11 +2,9 @@ package Adaptor
 
 import Interface.CardListener
 import Model.Hewan
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.week2_0706012110042.R
 import com.example.week2_0706012110042.databinding.CardHewanBinding
@@ -34,9 +32,6 @@ class Adapter (val ListData: MutableList<Hewan>, val cardlistener: CardListener)
             viubain.imageButton2.setOnClickListener(){
                 cardlistener.OnFeedClick(position)
             }
-            if(hewan.foto.isNotEmpty()){
-                viubain.imageView2.setImageURI(Uri.parse(hewan.foto))
-            }
         }
     }
 
@@ -51,6 +46,6 @@ class Adapter (val ListData: MutableList<Hewan>, val cardlistener: CardListener)
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return ListData.size
     }
 }
