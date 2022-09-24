@@ -8,13 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.week2_0706012110042.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.util.jar.Manifest
 
 class MainActivity : AppCompatActivity(), CardListener {
 
@@ -87,7 +84,9 @@ class MainActivity : AppCompatActivity(), CardListener {
 
     override fun OnFeedClick(position: Int) {
         if(GlobalVar.ListHewan.get(position).jenis.equals("Ayam")){
-            Toast.makeText(baseContext, "Kamu memberi makan biji-bijian")
+            Toast.makeText(baseContext, "Kamu memberi makan biji-bijian", Toast.LENGTH_LONG).show()
+        }else{
+            Toast.makeText(baseContext, "Kamu memberi mkan rerumputan", Toast.LENGTH_LONG).show()
         }
     }
 
