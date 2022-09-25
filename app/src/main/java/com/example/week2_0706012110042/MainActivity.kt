@@ -40,7 +40,9 @@ class MainActivity : AppCompatActivity(), CardListener {
 
     private fun emboh(){
         viubain.floatingActionButton.setOnClickListener(){
-            val myintent = Intent(this, FormActivity::class.java)
+            val myintent = Intent(this, FormActivity::class.java).apply {
+                putExtra("status", GlobalVar.statusAdd)
+            }
             startActivity(myintent)
         }
 
@@ -54,6 +56,7 @@ class MainActivity : AppCompatActivity(), CardListener {
 
     override fun OnEditClick(position: Int) {
         val myintent = Intent(this, FormActivity::class.java).apply {
+            putExtra("status", GlobalVar.StatusEdit)
             putExtra("position", position)
         }
         startActivity(myintent)
@@ -75,11 +78,11 @@ class MainActivity : AppCompatActivity(), CardListener {
 
     override fun OnSoundClick(position: Int) {
         if (GlobalVar.ListHewan.get(position).jenis.equals("Ayam")){
-            Toast.makeText(baseContext, "BOCK, BOCK, BOCK, BOOOOOOCK", Toast.LENGTH_LONG).show()
+            Toast.makeText(baseContext, "kamu baik banget deh :)", Toast.LENGTH_LONG).show()
         }else if (GlobalVar.ListHewan.get(position).jenis.equals("Kambing")){
-            Toast.makeText(baseContext, "Kamu Cantik deh hari ini :)", Toast.LENGTH_LONG).show()
+            Toast.makeText(baseContext, "Kamu Cakep banget deh :)", Toast.LENGTH_LONG).show()
         }else{
-            Toast.makeText(baseContext, "Aku suka gayamu hari ini :)", Toast.LENGTH_LONG).show()
+            Toast.makeText(baseContext, "Gayamu keren banget deh :)", Toast.LENGTH_LONG).show()
         }
     }
 
