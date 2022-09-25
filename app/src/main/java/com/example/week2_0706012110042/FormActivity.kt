@@ -19,6 +19,7 @@ class FormActivity : AppCompatActivity() {
         viubain = ActivityFormBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(viubain.root)
+        supportActionBar?.hide()
         GetIntent()
         setuplistener()
     }
